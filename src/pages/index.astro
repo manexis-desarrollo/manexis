@@ -121,6 +121,26 @@ const faqs = [
     a: "Preferimos Astro + Tailwind para velocidad en front, y Node/TypeScript para APIs. También trabajamos con stacks existentes si ya están en producción."
   }
 ];
+
+const techIconMap: Record<string, { svg?: string; img?: string }> = {
+  Astro: { img: "/images/logos/astro.png" },
+  Node: { img: "/images/logos/node.png" },
+  Postgres: { img: "/images/logos/postgres.png" },
+  Mongo: {
+    svg: '<svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M7.29395 11.8039c0-3.96638 2.13959-6.41723 3.53335-8.01378.6733-.7712 1.1725-1.34306 1.1725-1.79012 0 .44706.4993 1.01892 1.1725 1.79013 1.3938 1.59654 3.5334 4.04739 3.5334 8.01377 0 4.3266-2.7501 6.9507-4.0764 7.7654L12.3701 22h-.7071l-.2906-2.4295c-1.3255-.8132-4.07845-3.4378-4.07845-7.7666Zm4.06395 6.7007.6419-9.44578.649 9.44578-.649.7503-.6419-.7503Z" clip-rule="evenodd"/></svg>'
+  },
+  React: {
+    svg: '<svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M21.718 12c0-1.429-1.339-2.681-3.467-3.5.029-.18.077-.37.1-.545.217-2.058-.273-3.543-1.379-4.182-1.235-.714-2.983-.186-4.751 1.239C10.45 3.589 8.7 3.061 7.468 3.773c-1.107.639-1.6 2.124-1.379 4.182.018.175.067.365.095.545-2.127.819-3.466 2.071-3.466 3.5 0 1.429 1.339 2.681 3.466 3.5-.028.18-.077.37-.095.545-.218 2.058.272 3.543 1.379 4.182.376.213.803.322 1.235.316a5.987 5.987 0 0 0 3.514-1.56 5.992 5.992 0 0 0 3.515 1.56 2.44 2.44 0 0 0 1.236-.316c1.106-.639 1.6-2.124 1.379-4.182-.019-.175-.067-.365-.1-.545 2.132-.819 3.471-2.071 3.471-3.5Zm-6.01-7.548a1.5 1.5 0 0 1 .76.187c.733.424 1.055 1.593.884 3.212-.012.106-.043.222-.058.33-.841-.243-1.7-.418-2.57-.523a16.165 16.165 0 0 0-1.747-1.972 4.9 4.9 0 0 1 2.731-1.234Zm-7.917 8.781c.172.34.335.68.529 1.017.194.337.395.656.6.969a14.09 14.09 0 0 1-1.607-.376 14.38 14.38 0 0 1 .478-1.61Zm-.479-4.076a14.085 14.085 0 0 1 1.607-.376c-.205.313-.405.634-.6.969-.195.335-.357.677-.529 1.017-.19-.527-.35-1.064-.478-1.61ZM8.3 12a19.32 19.32 0 0 1 .888-1.75c.33-.568.69-1.118 1.076-1.65.619-.061 1.27-.1 1.954-.1.684 0 1.333.035 1.952.1a19.63 19.63 0 0 1 1.079 1.654c.325.567.621 1.15.887 1.746a18.869 18.869 0 0 1-1.953 3.403 19.218 19.218 0 0 1-3.931 0 20.169 20.169 0 0 1-1.066-1.653A19.324 19.324 0 0 1 8.3 12Zm7.816 2.25c.2-.337.358-.677.53-1.017.191.527.35 1.065.478 1.611a14.48 14.48 0 0 1-1.607.376c.202-.314.404-.635.597-.97h.002Zm.53-3.483c-.172-.34-.335-.68-.53-1.017a20.214 20.214 0 0 0-.6-.97c.542.095 1.078.22 1.606.376a14.111 14.111 0 0 1-.478 1.611h.002ZM12.217 6.34c.4.375.777.773 1.13 1.193-.37-.02-.746-.033-1.129-.033s-.76.013-1.131.033c.353-.42.73-.817 1.13-1.193Zm-4.249-1.7a1.5 1.5 0 0 1 .76-.187 4.9 4.9 0 0 1 2.729 1.233A16.253 16.253 0 0 0 9.71 7.658c-.87.105-1.728.28-2.569.524-.015-.109-.047-.225-.058-.331-.171-1.619.151-2.787.885-3.211ZM3.718 12c0-.9.974-1.83 2.645-2.506.218.857.504 1.695.856 2.506-.352.811-.638 1.65-.856 2.506C4.692 13.83 3.718 12.9 3.718 12Zm4.25 7.361c-.734-.423-1.056-1.593-.885-3.212.011-.106.043-.222.058-.331.84.243 1.697.418 2.564.524a16.37 16.37 0 0 0 1.757 1.982c-1.421 1.109-2.714 1.488-3.494 1.037Zm3.11-2.895c.374.021.753.034 1.14.034.387 0 .765-.013 1.139-.034a14.4 14.4 0 0 1-1.14 1.215 14.248 14.248 0 0 1-1.139-1.215Zm5.39 2.895c-.782.451-2.075.072-3.5-1.038a16.248 16.248 0 0 0 1.757-1.981 16.41 16.41 0 0 0 2.565-.523c.015.108.046.224.058.33.175 1.619-.148 2.789-.88 3.212Zm1.6-4.854A16.563 16.563 0 0 0 17.216 12c.352-.812.638-1.65.856-2.507 1.671.677 2.646 1.607 2.646 2.507 0 .9-.975 1.83-2.646 2.507h-.004Z"/><path d="M12.215 13.773a1.792 1.792 0 1 0-1.786-1.8v.006a1.787 1.787 0 0 0 1.786 1.794Z"/></svg>'
+  },
+  Tailwind: {
+    svg: '<svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M11.782 5.72a4.773 4.773 0 0 0-4.8 4.173 3.43 3.43 0 0 1 2.741-1.687c1.689 0 2.974 1.972 3.758 2.587a5.733 5.733 0 0 0 5.382.935c2-.638 2.934-2.865 3.137-3.921-.969 1.379-2.44 2.207-4.259 1.231-1.253-.673-2.19-3.438-5.959-3.318ZM6.8 11.979A4.772 4.772 0 0 0 2 16.151a3.431 3.431 0 0 1 2.745-1.687c1.689 0 2.974 1.972 3.758 2.587a5.733 5.733 0 0 0 5.382.935c2-.638 2.933-2.865 3.137-3.921-.97 1.379-2.44 2.208-4.259 1.231-1.253-.673-2.19-3.443-5.963-3.317Z"/></svg>'
+  },
+  Vue: {
+    svg: '<svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M14.5 3 12 7.156 9.857 3H2l10 18L22 3h-7.5ZM4.486 4.5h2.4L12 13.8l5.107-9.3h2.4L12 18.021 4.486 4.5Z"/></svg>'
+  }
+};
+
+const getTechIcon = (tech: { name: string; icon?: string }) => techIconMap[tech.name as keyof typeof techIconMap];
 ---
 
 <BaseLayout
@@ -134,7 +154,9 @@ const faqs = [
       </div>
 
       <button id="nav-toggle" class="md:hidden btn-ghost" aria-label="Abrir menú">
-        <span>Menú</span>
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
+        </svg>
       </button>
 
       <nav class="hidden md:flex items-center gap-1 text-sm text-slate-200">
@@ -213,14 +235,14 @@ const faqs = [
         </div>
 
         <div class="grid gap-4 lg:gap-5">
-          <div class="card p-6">
+            <div class="card p-6">
             <div class="flex items-center justify-between">
               <p class="text-sm text-slate-400">Barra de progreso</p>
               <span class="pill">Estabilidad</span>
             </div>
             <p class="mt-3 text-xl text-white">Tu plataforma, siempre arriba.</p>
             <div class="mt-4 h-3 w-full rounded-full bg-slate-800 overflow-hidden">
-              <div class="h-full w-[86%] rounded-full bg-gradient-to-r from-blue-400 to-blue-600"></div>
+              <div class="h-full w-[86%] rounded-full bg-linear-to-r from-blue-400 to-blue-600"></div>
             </div>
             <p class="mt-3 text-sm text-slate-400">Monitoreo, QA continuo y alertas proactivas.</p>
           </div>
@@ -251,7 +273,7 @@ const faqs = [
         </div>
         <div class="grid gap-6 md:grid-cols-3">
           {services.map((service) => (
-            <article class="card p-5 space-y-4" key={service.title}>
+            <article class="card p-5 space-y-4">
               <div class="flex items-center justify-between">
                 <h3 class="text-xl font-semibold text-white">{service.title}</h3>
                 <span class="pill">Listo +</span>
@@ -259,7 +281,7 @@ const faqs = [
               <p class="text-slate-300 text-sm">{service.description}</p>
               <div class="flex flex-wrap gap-2 text-xs text-slate-300">
                 {service.chips.map((chip) => (
-                  <span class="pill" key={chip}>{chip}</span>
+                  <span class="pill">{chip}</span>
                 ))}
               </div>
             </article>
@@ -277,10 +299,34 @@ const faqs = [
         </div>
         <div class="grid gap-6 md:grid-cols-3">
           {pricing.map((plan) => (
-            <article class={`card p-6 flex flex-col gap-4 transition-all duration-300 ${plan.highlight ? "ring-2 ring-blue-400" : "hover:ring-2 hover:ring-blue-400/60 hover:shadow-lg hover:shadow-blue-500/25"}`} key={plan.name}>
+            <article class={`card p-6 flex flex-col gap-4 transition-all duration-300 ${plan.highlight ? "ring-2 ring-blue-400" : "hover:ring-2 hover:ring-blue-400/60 hover:shadow-lg hover:shadow-blue-500/25"}`}>
               <div class="flex items-center justify-between">
                 <h3 class="text-xl font-semibold text-white">{plan.name}</h3>
-                {plan.highlight ? <span class="pill">Favorito</span> : <span class="pill">Listo</span>}
+                {plan.highlight ? (
+                  <span class="pill">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4.5V19a1 1 0 0 0 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.207M20 9v3.207" />
+                    </svg>
+                  </span>
+                ) : plan.name === "Despegue" ? (
+                  <span class="pill">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                    </svg>
+                  </span>
+                ) : plan.name === "Enterprise" ? (
+                  <span class="pill">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M8.737 8.737a21.49 21.49 0 0 1 3.308-2.724m0 0c3.063-2.026 5.99-2.641 7.331-1.3 1.827 1.828.026 6.591-4.023 10.64-4.049 4.049-8.812 5.85-10.64 4.023-1.33-1.33-.736-4.218 1.249-7.253m6.083-6.11c-3.063-2.026-5.99-2.641-7.331-1.3-1.827 1.828-.026 6.591 4.023 10.64m3.308-9.34a21.497 21.497 0 0 1 3.308 2.724m2.775 3.386c1.985 3.035 2.579 5.923 1.248 7.253-1.336 1.337-4.245.732-7.295-1.275M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
+                    </svg>
+                  </span>
+                ) : (
+                  <span class="pill">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                    </svg>
+                  </span>
+                )}
               </div>
               <div>
                 <p class="text-3xl font-bold text-white">{plan.price}</p>
@@ -288,7 +334,7 @@ const faqs = [
               </div>
               <ul class="space-y-2 text-sm text-slate-200">
                 {plan.features.map((feature) => (
-                  <li class="flex items-start gap-2" key={feature}>
+                  <li class="flex items-start gap-2">
                     <span class="mt-1 h-2 w-2 rounded-full bg-blue-400"></span>
                     <span>{feature}</span>
                   </li>
@@ -313,14 +359,19 @@ const faqs = [
         </div>
         <div class="grid gap-4 md:grid-cols-3">
           {projects.map((project) => (
-            <article class="card p-5 space-y-3" key={project.title}>
+            <article class="card p-5 space-y-3">
               <p class="text-sm text-blue-300">{project.stack}</p>
               <h3 class="text-xl font-semibold text-white">{project.title}</h3>
               <p class="text-slate-300 text-sm">{project.result}</p>
               <div class="flex flex-wrap gap-2">
                 {project.tech.map((t) => (
-                  <span class="tech-chip" key={`${project.title}-${t.name}`}>
-                    <span class="tech-icon">{t.icon}</span>
+                  <span class="tech-chip">
+                    {(() => {
+                      const icon = getTechIcon(t);
+                      if (!icon) return <span class="tech-icon">{t.icon}</span>;
+                      if (icon.svg) return <span class="tech-icon" set:html={icon.svg}></span>;
+                      return <img class="tech-icon h-5 w-5" src={icon.img} alt={t.name} loading="lazy" />;
+                    })()}
                     {t.name}
                   </span>
                 ))}
@@ -381,7 +432,7 @@ const faqs = [
         </div>
         <div class="grid gap-4 md:grid-cols-2">
           {faqs.map((faq) => (
-            <article class="card p-5 space-y-2" key={faq.q}>
+            <article class="card p-5 space-y-2">
               <h3 class="text-lg font-semibold text-white">{faq.q}</h3>
               <p class="text-slate-300 text-sm leading-relaxed">{faq.a}</p>
             </article>
@@ -413,10 +464,15 @@ const faqs = [
         <a class="btn-ghost w-fit" href="mailto:hola@manexis.com">hola@manexis.com</a>
         <div class="flex items-center gap-3 mt-4">
           <a href={whatsappLink} target="_blank" rel="noreferrer" class="social-icon-link">
-            <img src="/images/logos/wsapp.png" alt="WhatsApp" class="h-8 w-8" />
+            <svg class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
+              <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
+            </svg>
           </a>
           <a href="https://www.instagram.com/manexis" target="_blank" rel="noreferrer" class="social-icon-link">
-            <img src="/images/logos/insta.png" alt="Instagram" class="h-8 w-8" />
+            <svg class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path fill="currentColor" fill-rule="evenodd" d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" clip-rule="evenodd"/>
+            </svg>
           </a>
           <a href="https://www.facebook.com/manexis" target="_blank" rel="noreferrer" class="social-icon-link">
             <svg class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">

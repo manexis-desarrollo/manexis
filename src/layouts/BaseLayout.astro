@@ -1,0 +1,59 @@
+---
+import "../styles/global.css";
+
+const {
+  title = "MANEXIS | Consultora de software",
+  description = "Construimos plataformas y productos digitales a la velocidad que tu negocio necesita.",
+  ogImage = "/favicon.svg",
+  canonical = "https://manexis.com/"
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0d1117" />
+    <link rel="icon" type="image/svg+xml" href="/images/logo_p.svg" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "MANEXIS",
+    "url": "https://manexis.com/",
+    "logo": "https://manexis.com/favicon.svg",
+    "description": "Consultora de software: sitios, plataformas e integraciones listas para crecer.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "telephone": "+52 55 6005 6607",
+      "areaServed": "MX",
+      "availableLanguage": ["es", "en"]
+    }
+  }
+    </script>
+  </head>
+  <body class="bg-black text-slate-100 antialiased">
+    <div class="relative min-h-screen overflow-hidden">
+      <div class="pointer-events-none absolute inset-0 opacity-80">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,#1f6feb22_0,transparent_30%),radial-gradient(circle_at_80%_10%,#2ea04322_0,transparent_28%),radial-gradient(circle_at_50%_70%,#7ee7871a_0,transparent_32%)]"></div>
+      </div>
+      <div class="relative">
+        <slot />
+      </div>
+    </div>
+  </body>
+</html>

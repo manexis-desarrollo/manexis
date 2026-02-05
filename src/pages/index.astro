@@ -1,16 +1,564 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 
+const whatsappLink = "https://wa.me/525560056607?text=Hola%20MANEXIS%2C%20quiero%20una%20propuesta";
+
+const navLinks = [
+  { label: "Servicios", href: "#servicios" },
+  { label: "Precios", href: "#precios" },
+  { label: "Trabajo", href: "#proyectos" },
+  { label: "Contacto", href: "#contacto" },
+  { label: "FAQ", href: "#faq" }
+];
+
+const services = [
+  {
+    title: "Productos web a medida",
+    description: "Portales, paneles internos y experiencias que elevan tus operaciones sin plantillas genéricas.",
+    chips: ["Astro/React", "Arquitectura API", "Accesibilidad"]
+  },
+  {
+    title: "Integraciones y automatización",
+    description: "Conectamos ERP, CRM, facturación y tus herramientas actuales para que los datos fluyan.",
+    chips: ["APIs REST/GraphQL", "ETL ligero", "Workflows gamificados"]
+  },
+  {
+    title: "Mantenimiento por periodos",
+    description: "Planes recurrentes con SLA claro: estabilizamos, monitoreamos y evolucionamos tu plataforma.",
+    chips: ["Observabilidad", "Mejoras evolutivas", "QA continuo"]
+  }
+];
+
+const pricing = [
+  {
+    name: "Despegue",
+    price: "$12,000 MXN",
+    cadence: "desde / proyecto",
+    highlight: false,
+    features: [
+      "Landing o micrositio listo en 2-3 semanas",
+      "Copy + UX listos para captar leads",
+      "Optimización para Netlify y SEO técnico",
+      "1 sprint de ajustes incluidos"
+    ],
+    note: "Ideal para validar rápido"
+  },
+  {
+    name: "Crecimiento",
+    price: "$28,000 MXN",
+    cadence: "desde / proyecto",
+    highlight: true,
+    features: [
+      "Backoffice + componentes a medida",
+      "Integraciones con APIs o ERP",
+      "Dashboard con métricas clave",
+      "Soporte trimestral incluido"
+    ],
+    note: "Nuestro plan más elegido"
+  },
+  {
+    name: "Enterprise",
+    price: "A la medida",
+    cadence: "retainer / mensual",
+    highlight: false,
+    features: [
+      "Roadmap conjunto y células dedicadas",
+      "SLA, monitoreo y alertas 24/7",
+      "Automatizaciones y QA continuo",
+      "Gobernanza de releases y seguridad"
+    ],
+    note: "Para operaciones críticas"
+  }
+];
+
+const projects = [
+  {
+    title: "Portal de onboarding B2B",
+    result: "Redujimos tiempos de alta de clientes de 5 días a 36 horas con flujos guiados.",
+    stack: "Astro + Supabase + Tailwind",
+    tech: [
+      { name: "Astro", icon: "A" },
+      { name: "Supabase", icon: "S" },
+      { name: "Tailwind", icon: "T" }
+    ]
+  },
+  {
+    title: "Control operativo para campo",
+    result: "Ciclos de captura 40% más rápidos con vistas móviles, badges y logros de equipo.",
+    stack: "React + API Node + Postgres",
+    tech: [
+      { name: "React", icon: "R" },
+      { name: "Node", icon: "N" },
+      { name: "Postgres", icon: "P" }
+    ]
+  },
+  {
+    title: "Automatización de reportes",
+    result: "Reportes semanales sin esfuerzo: datos consolidados y enviados automáticamente al equipo.",
+    stack: "APIs REST + ETL ligero",
+    tech: [
+      { name: "APIs", icon: "API" },
+      { name: "Node", icon: "N" }
+    ]
+  }
+];
+
+const faqs = [
+  {
+    q: "¿Trabajan con empresas pequeñas y grandes?",
+    a: "Sí. Adaptamos el alcance: desde un sitio de lanzamiento hasta plataformas con SLA y gobernanza."
+  },
+  {
+    q: "¿Cómo funciona el mantenimiento por periodos?",
+    a: "Definimos un paquete de horas y entregables por trimestre, con métricas de salud, soporte y mejoras evolutivas."
+  },
+  {
+    q: "¿Pueden integrar con mis sistemas actuales?",
+    a: "Integramos con ERP, CRM, pasarelas de pago y servicios internos a través de APIs REST o GraphQL."
+  },
+  {
+    q: "¿En qué stack trabajan?",
+    a: "Preferimos Astro + Tailwind para velocidad en front, y Node/TypeScript para APIs. También trabajamos con stacks existentes si ya están en producción."
+  }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="MANEXIS | Consultora de software"
+  description="Consultora de software para empresas que necesitan sitios, plataformas e integraciones listas para crecer."
+>
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
+    <div class="glass w-full flex items-center justify-between gap-3 px-6 py-5 border-b border-slate-800">
+      <div class="flex items-center gap-3">
+        <img src="/images/logo_desktop.png" alt="MANEXIS Logo" class="h-16 w-auto" />
+      </div>
+
+      <button id="nav-toggle" class="md:hidden btn-ghost" aria-label="Abrir menú">
+        <span>Menú</span>
+      </button>
+
+      <nav class="hidden md:flex items-center gap-1 text-sm text-slate-200">
+        {navLinks.map((link) => (
+          <a class="nav-pill" href={link.href}>{link.label}</a>
+        ))}
+      </nav>
+
+      <div class="hidden md:flex items-center gap-3">
+        <button id="theme-toggle-dark" class="theme-toggle-btn" aria-label="Activar modo oscuro">
+          <span class="inline-flex shrink-0 justify-center items-center size-9">
+            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          </span>
+        </button>
+        <button id="theme-toggle-light" class="theme-toggle-btn hidden" aria-label="Activar modo claro">
+          <span class="inline-flex shrink-0 justify-center items-center size-9">
+            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          </span>
+        </button>
+        <a class="btn-primary flex items-center gap-2" href={whatsappLink} target="_blank" rel="noreferrer">
+          Agenda
+          <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
+            <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden origin-top scale-y-0 opacity-0 transition duration-200 glass px-6 py-4 border-b border-slate-800">
+      <div class="flex flex-col gap-2 text-sm text-slate-200">
+        {navLinks.map((link) => (
+          <a class="nav-pill" href={link.href}>{link.label}</a>
+        ))}
+        <a class="btn-primary justify-center flex items-center gap-2" href={whatsappLink} target="_blank" rel="noreferrer">
+          Agenda 24h
+          <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
+            <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-16 pt-32 md:pt-20">
+    <main class="space-y-16 pt-0 md:pt-8">
+      <!-- Hero Logo -->
+      <div class="flex justify-center py-0 md:py-8">
+        <div class="text-center">
+          <p class="main-title text-4xl sm:text-5xl lg:text-6xl uppercase tracking-[0.2em] text-slate-400 font-bold">
+            <span class="title-letter">M</span><span class="title-letter">A</span><span class="title-letter">N</span><span class="title-letter">E</span><span class="title-letter">X</span><span class="title-letter">I</span><span class="title-letter">S</span>
+          </p>
+          <p class="text-2xl sm:text-3xl lg:text-4xl text-slate-200 mt-4">Consultora de software</p>
+        </div>
+      </div>
+
+      <section class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
+        <div class="space-y-6">
+          <div class="pill w-fit">Nivel Pro · Software a la velocidad de negocio</div>
+          <h1 class="text-4xl sm:text-5xl font-semibold leading-tight text-white">
+            Software a la medida con la velocidad y cuidado que tu operación merece.
+          </h1>
+          <p class="text-lg text-slate-300 max-w-2xl">
+            Somos MANEXIS, consultora de software. Diseñamos y construimos sitios, plataformas e integraciones para empresas que crecen sin fricción.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a class="btn-primary" href={whatsappLink} target="_blank" rel="noreferrer">Agendar llamada</a>
+            <a class="btn-ghost" href="#servicios">Ver qué hacemos</a>
+          </div>
+          <div class="flex flex-wrap gap-3 text-xs text-slate-300">
+            <span class="pill">Tecnologías: Astro · Tailwind · Node</span>
+            <span class="pill">SLA y soporte por periodos</span>
+            <span class="pill">Listo para Netlify</span>
+          </div>
+        </div>
+
+        <div class="grid gap-4 lg:gap-5">
+          <div class="card p-6">
+            <div class="flex items-center justify-between">
+              <p class="text-sm text-slate-400">Barra de progreso</p>
+              <span class="pill">Estabilidad</span>
+            </div>
+            <p class="mt-3 text-xl text-white">Tu plataforma, siempre arriba.</p>
+            <div class="mt-4 h-3 w-full rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full w-[86%] rounded-full bg-gradient-to-r from-blue-400 to-blue-600"></div>
+            </div>
+            <p class="mt-3 text-sm text-slate-400">Monitoreo, QA continuo y alertas proactivas.</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="card p-4">
+              <p class="text-xs text-slate-400">Tiempo de salida</p>
+              <p class="mt-2 text-2xl font-semibold text-white">4-6 semanas</p>
+              <p class="text-xs text-blue-300">Sprint a sprint, entregas visibles.</p>
+            </div>
+            <div class="card p-4">
+              <p class="text-xs text-slate-400">Métricas</p>
+              <p class="mt-2 text-2xl font-semibold text-white">Impacto medible</p>
+              <p class="text-xs text-blue-300">Productividad, adopción y uptime.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="servicios" class="space-y-6">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="pill">Qué hacemos</p>
+            <h2 class="mt-3 text-3xl font-semibold text-white">Servicios pensados para crecer sin fricción.</h2>
+            <p class="text-slate-300">Construimos productos claros, medibles y fáciles de operar.</p>
+          </div>
+          <a class="btn-ghost" href={whatsappLink} target="_blank" rel="noreferrer">Cotizar ahora</a>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          {services.map((service) => (
+            <article class="card p-5 space-y-4" key={service.title}>
+              <div class="flex items-center justify-between">
+                <h3 class="text-xl font-semibold text-white">{service.title}</h3>
+                <span class="pill">Listo +</span>
+              </div>
+              <p class="text-slate-300 text-sm">{service.description}</p>
+              <div class="flex flex-wrap gap-2 text-xs text-slate-300">
+                {service.chips.map((chip) => (
+                  <span class="pill" key={chip}>{chip}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="precios" class="space-y-6">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="pill">Planes claros</p>
+            <h2 class="mt-3 text-3xl font-semibold text-white">Precios transparentes y listos para iniciar.</h2>
+            <p class="text-slate-300">El mantenimiento se factura por periodos definidos con entregables medibles.</p>
+          </div>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          {pricing.map((plan) => (
+            <article class={`card p-6 flex flex-col gap-4 transition-all duration-300 ${plan.highlight ? "ring-2 ring-blue-400" : "hover:ring-2 hover:ring-blue-400/60 hover:shadow-lg hover:shadow-blue-500/25"}`} key={plan.name}>
+              <div class="flex items-center justify-between">
+                <h3 class="text-xl font-semibold text-white">{plan.name}</h3>
+                {plan.highlight ? <span class="pill">Favorito</span> : <span class="pill">Listo</span>}
+              </div>
+              <div>
+                <p class="text-3xl font-bold text-white">{plan.price}</p>
+                <p class="text-slate-400 text-sm">{plan.cadence}</p>
+              </div>
+              <ul class="space-y-2 text-sm text-slate-200">
+                {plan.features.map((feature) => (
+                  <li class="flex items-start gap-2" key={feature}>
+                    <span class="mt-1 h-2 w-2 rounded-full bg-blue-400"></span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="text-xs text-slate-400">{plan.note}</p>
+              <a class="btn-primary w-full text-center" href={whatsappLink} target="_blank" rel="noreferrer">
+                Cotizar este plan
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="proyectos" class="space-y-6">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="pill">Nuestro trabajo</p>
+            <h2 class="mt-3 text-3xl font-semibold text-white">Casos recientes y resultados.</h2>
+            <p class="text-slate-300">Diseñamos con enfoque en negocio, métricas y adopción.</p>
+          </div>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3">
+          {projects.map((project) => (
+            <article class="card p-5 space-y-3" key={project.title}>
+              <p class="text-sm text-blue-300">{project.stack}</p>
+              <h3 class="text-xl font-semibold text-white">{project.title}</h3>
+              <p class="text-slate-300 text-sm">{project.result}</p>
+              <div class="flex flex-wrap gap-2">
+                {project.tech.map((t) => (
+                  <span class="tech-chip" key={`${project.title}-${t.name}`}>
+                    <span class="tech-icon">{t.icon}</span>
+                    {t.name}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="contacto" class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+        <div class="card p-6 space-y-4">
+          <p class="pill w-fit">Contacto directo</p>
+          <h3 class="text-3xl font-semibold text-white">Hablemos de tu siguiente versión.</h3>
+          <p class="text-slate-300">Cuéntanos qué necesitas y en 24h proponemos alcance, tiempos y costo.</p>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <a class="btn-primary text-center" href={whatsappLink} target="_blank" rel="noreferrer">WhatsApp inmediato</a>
+            <a class="btn-ghost justify-center" href="mailto:hola@manexis.com">Enviar correo</a>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs text-slate-300">
+            <span class="pill">Respuesta en <strong>24h</strong></span>
+            <span class="pill">Reunión de descubrimiento incluida</span>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <form class="space-y-4" name="contacto" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contacto" />
+            <div>
+              <label class="block text-sm text-slate-300 mb-1" for="nombre">Nombre</label>
+              <input class="w-full rounded-lg bg-slate-900 border border-slate-700 px-3 py-2 text-white focus:border-emerald-400 focus:outline-none" type="text" name="nombre" id="nombre" required />
+            </div>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div>
+                <label class="block text-sm text-slate-300 mb-1" for="email">Correo</label>
+                <input class="w-full rounded-lg bg-slate-900 border border-slate-700 px-3 py-2 text-white focus:border-emerald-400 focus:outline-none" type="email" name="email" id="email" required />
+              </div>
+              <div>
+                <label class="block text-sm text-slate-300 mb-1" for="empresa">Empresa</label>
+                <input class="w-full rounded-lg bg-slate-900 border border-slate-700 px-3 py-2 text-white focus:border-emerald-400 focus:outline-none" type="text" name="empresa" id="empresa" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm text-slate-300 mb-1" for="necesidad">¿Qué necesitas?</label>
+              <textarea class="w-full rounded-lg bg-slate-900 border border-slate-700 px-3 py-2 text-white focus:border-emerald-400 focus:outline-none" name="necesidad" id="necesidad" rows="4" placeholder="Ej. Landing en 3 semanas, panel interno, integración con ERP" required></textarea>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <button class="btn-primary w-full sm:w-auto" type="submit">Enviar brief</button>
+              <p class="text-xs text-slate-400">También podemos firmar NDA si lo requieres.</p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="faq" class="space-y-6">
+        <div class="flex items-center gap-3">
+          <p class="pill">FAQ</p>
+          <h2 class="text-3xl font-semibold text-white">Resolvemos tus dudas rápido.</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {faqs.map((faq) => (
+            <article class="card p-5 space-y-2" key={faq.q}>
+              <h3 class="text-lg font-semibold text-white">{faq.q}</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">{faq.a}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="mt-16 w-full glass border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 grid gap-6 md:grid-cols-4 text-sm text-slate-300">
+      <div class="space-y-2">
+        <div class="flex items-center gap-2">
+          <img src="/images/logo_f.svg" alt="MANEXIS" class="h-12 w-auto" />
+        </div>
+        <p>Software a la medida con soporte por periodos y entregas visibles.</p>
+      </div>
+      <div class="space-y-2">
+        <p class="text-white font-semibold">Explora</p>
+        <div class="flex flex-col gap-1">
+          {navLinks.map((link) => (
+            <a class="nav-pill" href={link.href}>{link.label}</a>
+          ))}
+        </div>
+      </div>
+      <div class="space-y-2">
+        <p class="text-white font-semibold">Contacto</p>
+        <a class="btn-ghost w-fit" href={whatsappLink} target="_blank" rel="noreferrer">WhatsApp</a>
+        <a class="btn-ghost w-fit" href="mailto:hola@manexis.com">hola@manexis.com</a>
+        <div class="flex items-center gap-3 mt-4">
+          <a href={whatsappLink} target="_blank" rel="noreferrer" class="social-icon-link">
+            <img src="/images/logos/wsapp.png" alt="WhatsApp" class="h-8 w-8" />
+          </a>
+          <a href="https://www.instagram.com/manexis" target="_blank" rel="noreferrer" class="social-icon-link">
+            <img src="/images/logos/insta.png" alt="Instagram" class="h-8 w-8" />
+          </a>
+          <a href="https://www.facebook.com/manexis" target="_blank" rel="noreferrer" class="social-icon-link">
+            <svg class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="space-y-2">
+        <p class="text-white font-semibold">Disponibilidad</p>
+        <p>SLA por periodos y respuesta en 24h.</p>
+        <p class="text-slate-400">Listo para Netlify · Astro · Tailwind</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">↑</button>
+  
+  <!-- Botones flotantes -->
+  <div id="floating-buttons" class="floating-buttons-container">
+    <button id="floating-theme-dark" class="floating-btn theme-toggle-btn" aria-label="Activar modo oscuro">
+      <span class="inline-flex shrink-0 justify-center items-center size-9">
+        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </span>
+    </button>
+    <button id="floating-theme-light" class="floating-btn theme-toggle-btn hidden" aria-label="Activar modo claro">
+      <span class="inline-flex shrink-0 justify-center items-center size-9">
+        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </span>
+    </button>
+    <a id="floating-agenda" class="floating-btn floating-btn-agenda" href={whatsappLink} target="_blank" rel="noreferrer">
+      <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
+        <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
+      </svg>
+    </a>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const header = document.getElementById('main-header');
+  const backToTop = document.getElementById('back-to-top');
+  const themeToggleDark = document.getElementById('theme-toggle-dark');
+  const themeToggleLight = document.getElementById('theme-toggle-light');
+  const floatingThemeDark = document.getElementById('floating-theme-dark');
+  const floatingThemeLight = document.getElementById('floating-theme-light');
+  const floatingAgenda = document.getElementById('floating-agenda');
+  let lastY = window.scrollY;
+
+  // Theme toggle
+  const currentTheme = localStorage.getItem('theme') || 'dark';
+  const isLight = currentTheme === 'light';
+  document.body.classList.toggle('light-mode', isLight);
+  
+  if (themeToggleDark && themeToggleLight && floatingThemeDark && floatingThemeLight) {
+    // Inicializar visibilidad de botones
+    themeToggleDark.classList.toggle('hidden', isLight);
+    themeToggleLight.classList.toggle('hidden', !isLight);
+    floatingThemeDark.classList.toggle('hidden', isLight);
+    floatingThemeLight.classList.toggle('hidden', !isLight);
+
+    // Botón para activar modo claro (luna) - header
+    themeToggleDark.addEventListener('click', () => {
+      document.body.classList.add('light-mode');
+      localStorage.setItem('theme', 'light');
+      themeToggleDark.classList.add('hidden');
+      themeToggleLight.classList.remove('hidden');
+      floatingThemeDark.classList.add('hidden');
+      floatingThemeLight.classList.remove('hidden');
+    });
+
+    // Botón para activar modo oscuro (sol) - header
+    themeToggleLight.addEventListener('click', () => {
+      document.body.classList.remove('light-mode');
+      localStorage.setItem('theme', 'dark');
+      themeToggleLight.classList.add('hidden');
+      themeToggleDark.classList.remove('hidden');
+      floatingThemeLight.classList.add('hidden');
+      floatingThemeDark.classList.remove('hidden');
+    });
+
+    // Botón para activar modo claro (luna) - flotante
+    floatingThemeDark.addEventListener('click', () => {
+      document.body.classList.add('light-mode');
+      localStorage.setItem('theme', 'light');
+      themeToggleDark.classList.add('hidden');
+      themeToggleLight.classList.remove('hidden');
+      floatingThemeDark.classList.add('hidden');
+      floatingThemeLight.classList.remove('hidden');
+    });
+
+    // Botón para activar modo oscuro (sol) - flotante
+    floatingThemeLight.addEventListener('click', () => {
+      document.body.classList.remove('light-mode');
+      localStorage.setItem('theme', 'dark');
+      themeToggleLight.classList.add('hidden');
+      themeToggleDark.classList.remove('hidden');
+      floatingThemeLight.classList.add('hidden');
+      floatingThemeDark.classList.remove('hidden');
+    });
+  }
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const open = menu.dataset.open === 'true';
+      menu.dataset.open = (!open).toString();
+      menu.style.scale = open ? '1 0' : '1 1';
+      menu.style.opacity = open ? '0' : '1';
+    });
+  }
+
+  // Header siempre visible - scroll behavior deshabilitado
+
+  if (backToTop && floatingThemeDark && floatingThemeLight && floatingAgenda) {
+    window.addEventListener('scroll', () => {
+      const show = window.scrollY > 320;
+      
+      if (show) {
+        // Mostrar: back to top → whatsapp → modo tema
+        setTimeout(() => backToTop.classList.add('show'), 0);
+        setTimeout(() => floatingAgenda.classList.add('show'), 100);
+        setTimeout(() => {
+          if (!floatingThemeDark.classList.contains('hidden')) {
+            floatingThemeDark.classList.add('show');
+          }
+          if (!floatingThemeLight.classList.contains('hidden')) {
+            floatingThemeLight.classList.add('show');
+          }
+        }, 200);
+      } else {
+        // Ocultar: modo tema → whatsapp → back to top
+        floatingThemeDark.classList.remove('show');
+        floatingThemeLight.classList.remove('show');
+        setTimeout(() => floatingAgenda.classList.remove('show'), 100);
+        setTimeout(() => backToTop.classList.remove('show'), 200);
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>

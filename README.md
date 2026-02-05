@@ -1,43 +1,35 @@
-# Astro Starter Kit: Minimal
+# MANEXIS · Landing en Astro + Tailwind
+
+Sitio publicitario para la consultora de software MANEXIS. Incluye hero, servicios, planes de precios, portafolio y contacto con WhatsApp y formulario listo para Netlify Forms.
+
+## Requisitos previos
+
+- Node 18+ (se usa npm)
+
+## Uso rápido
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev    # http://localhost:4321
+npm run build  # genera dist/
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Ajustes rápidos
 
-## 🚀 Project Structure
+- WhatsApp: actualiza el enlace en `src/pages/index.astro` (variable `whatsappLink`).
+- Marca y textos: todo el contenido vivo está en `src/pages/index.astro`.
+- Estilos globales: `src/styles/global.css` (paleta GitHub + acentos tipo Duolingo).
 
-Inside of your Astro project, you'll see the following folders and files:
+## Despliegue en Netlify
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+- Archivo `netlify.toml` ya configurado con `npm run build` y publish `dist`.
+- El formulario de contacto usa Netlify Forms (`data-netlify="true"`).
+
+## Estructura
+
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+src/
+├─ layouts/BaseLayout.astro
+└─ pages/index.astro
+```

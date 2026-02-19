@@ -55,8 +55,26 @@ body {
 @layer components {
 	.glass {
 		backdrop-filter: blur(18px);
-		background: rgba(48, 48, 48, 0.404);
+		background: rgba(0, 0, 0, 0.6);
 		border: 1px solid rgba(255, 255, 255, 0.06);
+	}
+
+	body.light-mode .glass {
+		background: rgba(255, 255, 255, 0.8);
+		border: 1px solid rgba(0, 0, 0, 0.1);
+	}
+
+	#main-header {
+		will-change: transform;
+	}
+
+	#main-header .main-tool-bar {
+		transition: padding 0.3s ease, height 0.3s ease, background 0.3s ease;
+	}
+
+	#main-header.header-compact .main-tool-bar {
+		padding-top: 12px;
+		padding-bottom: 12px;
 	}
 
 	.card {
@@ -139,6 +157,75 @@ body {
 
 	body.light-mode .title-letter:hover {
 		text-shadow: 0 0 20px #0062ff, 0 0 40px #5d98f8, 0 0 60px #78a9f7;
+	}
+
+	/* Logos para modo oscuro y claro */
+	.dark-logo {
+		display: block;
+	}
+
+	body.light-mode .dark-logo {
+		display: none;
+	}
+
+	.light-logo {
+		display: none;
+	}
+
+	body.light-mode .light-logo {
+		display: block;
+	}
+
+	/* Icono del menú móvil */
+	.menu-icon {
+		color: #ffffff;
+	}
+
+	body.light-mode .menu-icon {
+		color: #000000;
+	}
+
+	/* Iconos de precios */
+	.pricing-icon {
+		color: #ffffff;
+	}
+
+	body.light-mode .pricing-icon {
+		color: #000000;
+	}
+
+	/* Estilos para formularios en modo claro */
+	body.light-mode input[type="text"],
+	body.light-mode input[type="email"],
+	body.light-mode textarea {
+		background: #ffffff !important;
+		color: #000000 !important;
+		border-color: #d1d5db !important;
+	}
+
+	body.light-mode input::placeholder,
+	body.light-mode textarea::placeholder {
+		color: #6b7280 !important;
+	}
+
+	/* Footer en modo claro */
+	body.light-mode footer .text-white {
+		color: #000000 !important;
+	}
+
+	body.light-mode .btn-ghost {
+		color: #000000;
+		border-color: rgba(0, 0, 0, 0.15);
+		background: rgba(0, 0, 0, 0.04);
+	}
+
+	body.light-mode .btn-ghost:hover {
+		border-color: rgba(59, 130, 246, 0.5);
+		background: rgba(59, 130, 246, 0.12);
+	}
+
+	body.light-mode .social-icon-link svg {
+		color: #000000;
 	}
 
 	/* Textos generales en modo claro */
@@ -286,7 +373,7 @@ body {
 		background: rgba(59, 130, 246, 0.3);
 		backdrop-filter: blur(12px);
 		-webkit-backdrop-filter: blur(12px);
-		color: #e5e7eb;
+		color: #ffffff;
 		border: 1px solid rgba(96, 165, 250, 0.6);
 		box-shadow: 0 12px 30px rgba(59, 130, 246, 0.35);
 		transition: opacity 160ms ease, transform 160ms ease;
@@ -294,6 +381,10 @@ body {
 		transform: scale(0.9) translateY(6px);
 		pointer-events: none;
 		z-index: 60;
+	}
+
+	body.light-mode .back-to-top {
+		color: #000000;
 	}
 
 	.back-to-top.show {
@@ -369,7 +460,7 @@ body {
 	}
 
 	body.light-mode .floating-btn-agenda {
-		background: rgba(59, 130, 246, 0.9);
+		background: rgba(59, 130, 246, 0.3);
 		color: #ffffff;
 	}
 
@@ -382,6 +473,19 @@ body {
 	.nav-pill:hover {
 		background: rgba(96, 165, 250, 0.12);
 		color: #ffffff;
+	}
+
+	body.light-mode .nav-pill {
+		color: #000000;
+	}
+
+	body.light-mode .nav-pill:hover {
+		background: rgba(59, 130, 246, 0.15);
+		color: #000000;
+	}
+
+	body.light-mode #mobile-menu {
+		border-color: rgba(0, 0, 0, 0.1) !important;
 	}
 
 	.tech-chip {
@@ -403,10 +507,16 @@ body {
 		height: 22px;
 		width: 22px;
 		border-radius: 8px;
-		background: linear-gradient(135deg, #3b82f6, #60a5fa);
-		color: #0b1520;
+		background: rgba(59, 130, 246, 0.2);
+		color: #60a5fa;
 		font-weight: 700;
 		font-size: 12px;
+	}
+
+	/* Logo de Astro más pequeño */
+	.tech-icon img[src*="astro"] {
+		height: 16px !important;
+		width: 16px !important;
 	}
 }
 

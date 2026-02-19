@@ -148,24 +148,25 @@ const getTechIcon = (tech: { name: string; icon?: string }) => techIconMap[tech.
   description="Consultora de software para empresas que necesitan sitios, plataformas e integraciones listas para crecer."
 >
   <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
-    <div class="glass w-full flex items-center justify-between gap-3 px-6 py-5 border-b border-slate-800">
-      <div class="flex items-center gap-3">
-        <img src="/images/logo_desktop.png" alt="MANEXIS Logo" class="h-16 w-auto" />
+    <div class="main-tool-bar glass w-full flex items-center justify-between gap-3 px-6 py-5 border-b border-slate-900">
+      <div class="flex items-center gap-3 flex-1 justify-center md:flex-initial md:justify-start">
+        <img src="/images/manexis_h_b.png" alt="MANEXIS Logo" class="h-16 w-auto dark-logo" />
+        <img src="/images/manexis_h.png" alt="MANEXIS Logo" class="h-16 w-auto light-logo" />
       </div>
 
       <button id="nav-toggle" class="md:hidden btn-ghost" aria-label="Abrir menú">
-        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <svg class="w-6 h-6 menu-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
           <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
         </svg>
       </button>
 
-      <nav class="hidden md:flex items-center gap-1 text-sm text-slate-200">
+      <nav class="hidden md:flex items-center gap-4 text-sm text-slate-200">
         {navLinks.map((link) => (
           <a class="nav-pill" href={link.href}>{link.label}</a>
         ))}
       </nav>
 
-      <div class="hidden md:flex items-center gap-3">
+      <!-- <div class="hidden md:flex items-center gap-3">
         <button id="theme-toggle-dark" class="theme-toggle-btn" aria-label="Activar modo oscuro">
           <span class="inline-flex shrink-0 justify-center items-center size-9">
             <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
@@ -183,11 +184,11 @@ const getTechIcon = (tech: { name: string; icon?: string }) => techIconMap[tech.
             <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
           </svg>
         </a>
-      </div>
+      </div> -->
     </div>
 
     <div id="mobile-menu" class="md:hidden origin-top scale-y-0 opacity-0 transition duration-200 glass px-6 py-4 border-b border-slate-800">
-      <div class="flex flex-col gap-2 text-sm text-slate-200">
+      <div class="flex flex-col items-center gap-2 text-sm text-slate-200">
         {navLinks.map((link) => (
           <a class="nav-pill" href={link.href}>{link.label}</a>
         ))}
@@ -304,25 +305,25 @@ const getTechIcon = (tech: { name: string; icon?: string }) => techIconMap[tech.
                 <h3 class="text-xl font-semibold text-white">{plan.name}</h3>
                 {plan.highlight ? (
                   <span class="pill">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 pricing-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4.5V19a1 1 0 0 0 1 1h15M7 14l4-4 4 4 5-5m0 0h-3.207M20 9v3.207" />
                     </svg>
                   </span>
                 ) : plan.name === "Despegue" ? (
                   <span class="pill">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 pricing-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
                     </svg>
                   </span>
                 ) : plan.name === "Enterprise" ? (
                   <span class="pill">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 pricing-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                       <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M8.737 8.737a21.49 21.49 0 0 1 3.308-2.724m0 0c3.063-2.026 5.99-2.641 7.331-1.3 1.827 1.828.026 6.591-4.023 10.64-4.049 4.049-8.812 5.85-10.64 4.023-1.33-1.33-.736-4.218 1.249-7.253m6.083-6.11c-3.063-2.026-5.99-2.641-7.331-1.3-1.827 1.828-.026 6.591 4.023 10.64m3.308-9.34a21.497 21.497 0 0 1 3.308 2.724m2.775 3.386c1.985 3.035 2.579 5.923 1.248 7.253-1.336 1.337-4.245.732-7.295-1.275M14 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
                     </svg>
                   </span>
                 ) : (
                   <span class="pill">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 pricing-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
                     </svg>
                   </span>
@@ -444,25 +445,25 @@ const getTechIcon = (tech: { name: string; icon?: string }) => techIconMap[tech.
 
   <footer class="mt-16 w-full glass border-t border-slate-800">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 grid gap-6 md:grid-cols-4 text-sm text-slate-300">
-      <div class="space-y-2">
-        <div class="flex items-center gap-2">
-          <img src="/images/logo_f.svg" alt="MANEXIS" class="h-12 w-auto" />
+      <div class="space-y-2 text-center md:text-left">
+        <div class="flex items-center gap-2 justify-center md:justify-start">
+          <img src="/images/manexis_h_b.png" alt="MANEXIS" class="h-12 w-auto dark-logo" />
+          <img src="/images/manexis_h.png" alt="MANEXIS" class="h-12 w-auto light-logo" />
         </div>
         <p>Software a la medida con soporte por periodos y entregas visibles.</p>
       </div>
-      <div class="space-y-2">
+      <div class="space-y-2 text-center md:text-left">
         <p class="text-white font-semibold">Explora</p>
-        <div class="flex flex-col gap-1">
+        <div class="grid grid-cols-2 gap-1 justify-items-center md:flex md:flex-col md:items-start">
           {navLinks.map((link) => (
             <a class="nav-pill" href={link.href}>{link.label}</a>
           ))}
         </div>
       </div>
-      <div class="space-y-2">
+      <div class="space-y-2 text-center md:text-left">
         <p class="text-white font-semibold">Contacto</p>
-        <a class="btn-ghost w-fit" href={whatsappLink} target="_blank" rel="noreferrer">WhatsApp</a>
-        <a class="btn-ghost w-fit" href="mailto:hola@manexis.com">hola@manexis.com</a>
-        <div class="flex items-center gap-3 mt-4">
+        <a class="btn-ghost w-fit mx-auto md:mx-0" href="mailto:hola@manexis.com">hola@manexis.com</a>
+        <div class="flex items-center gap-3 mt-4 justify-center md:justify-start">
           <a href={whatsappLink} target="_blank" rel="noreferrer" class="social-icon-link">
             <svg class="w-8 h-8" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
               <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
@@ -481,7 +482,7 @@ const getTechIcon = (tech: { name: string; icon?: string }) => techIconMap[tech.
           </a>
         </div>
       </div>
-      <div class="space-y-2">
+      <div class="space-y-2 text-center md:text-left">
         <p class="text-white font-semibold">Disponibilidad</p>
         <p>SLA por periodos y respuesta en 24h.</p>
         <p class="text-slate-400">Listo para Netlify · Astro · Tailwind</p>
@@ -489,79 +490,63 @@ const getTechIcon = (tech: { name: string; icon?: string }) => techIconMap[tech.
     </div>
   </footer>
 
-  <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">↑</button>
   
   <!-- Botones flotantes -->
   <div id="floating-buttons" class="floating-buttons-container">
-    <button id="floating-theme-dark" class="floating-btn theme-toggle-btn" aria-label="Activar modo oscuro">
-      <span class="inline-flex shrink-0 justify-center items-center size-9">
-        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-      </span>
-    </button>
-    <button id="floating-theme-light" class="floating-btn theme-toggle-btn hidden" aria-label="Activar modo claro">
-      <span class="inline-flex shrink-0 justify-center items-center size-9">
-        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-      </span>
-    </button>
-    <a id="floating-agenda" class="floating-btn floating-btn-agenda" href={whatsappLink} target="_blank" rel="noreferrer">
-      <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-        <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
-        <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
-      </svg>
-    </a>
+    <div>
+      <button id="floating-theme-dark" class="floating-btn theme-toggle-btn" aria-label="Activar modo oscuro">
+        <span class="inline-flex shrink-0 justify-center items-center size-9">
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </span>
+      </button>
+      <button id="floating-theme-light" class="floating-btn theme-toggle-btn hidden" aria-label="Activar modo claro">
+        <span class="inline-flex shrink-0 justify-center items-center size-9">
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        </span>
+      </button>
+    </div>
+    <div>
+      <a id="floating-agenda" class="floating-btn floating-btn-agenda" href={whatsappLink} target="_blank" rel="noreferrer">
+        <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
+          <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
+        </svg>
+      </a>
+    </div>
+    <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">↑</button>
   </div>
 </BaseLayout>
 
-<script is:inline>
+<script type="module">
+  const loadGsap = () =>
+    Promise.all([
+      import('https://esm.sh/gsap@3.12.5'),
+      import('https://esm.sh/gsap@3.12.5/ScrollTrigger')
+    ]);
+
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('mobile-menu');
   const header = document.getElementById('main-header');
+  const toolbar = document.querySelector('.main-tool-bar');
   const backToTop = document.getElementById('back-to-top');
-  const themeToggleDark = document.getElementById('theme-toggle-dark');
-  const themeToggleLight = document.getElementById('theme-toggle-light');
   const floatingThemeDark = document.getElementById('floating-theme-dark');
   const floatingThemeLight = document.getElementById('floating-theme-light');
   const floatingAgenda = document.getElementById('floating-agenda');
-  let lastY = window.scrollY;
 
   // Theme toggle
   const currentTheme = localStorage.getItem('theme') || 'dark';
   const isLight = currentTheme === 'light';
   document.body.classList.toggle('light-mode', isLight);
   
-  if (themeToggleDark && themeToggleLight && floatingThemeDark && floatingThemeLight) {
-    // Inicializar visibilidad de botones
-    themeToggleDark.classList.toggle('hidden', isLight);
-    themeToggleLight.classList.toggle('hidden', !isLight);
+  if (floatingThemeDark && floatingThemeLight) {
+    // Inicializar visibilidad de botones flotantes
     floatingThemeDark.classList.toggle('hidden', isLight);
     floatingThemeLight.classList.toggle('hidden', !isLight);
-
-    // Botón para activar modo claro (luna) - header
-    themeToggleDark.addEventListener('click', () => {
-      document.body.classList.add('light-mode');
-      localStorage.setItem('theme', 'light');
-      themeToggleDark.classList.add('hidden');
-      themeToggleLight.classList.remove('hidden');
-      floatingThemeDark.classList.add('hidden');
-      floatingThemeLight.classList.remove('hidden');
-    });
-
-    // Botón para activar modo oscuro (sol) - header
-    themeToggleLight.addEventListener('click', () => {
-      document.body.classList.remove('light-mode');
-      localStorage.setItem('theme', 'dark');
-      themeToggleLight.classList.add('hidden');
-      themeToggleDark.classList.remove('hidden');
-      floatingThemeLight.classList.add('hidden');
-      floatingThemeDark.classList.remove('hidden');
-    });
 
     // Botón para activar modo claro (luna) - flotante
     floatingThemeDark.addEventListener('click', () => {
       document.body.classList.add('light-mode');
       localStorage.setItem('theme', 'light');
-      themeToggleDark.classList.add('hidden');
-      themeToggleLight.classList.remove('hidden');
       floatingThemeDark.classList.add('hidden');
       floatingThemeLight.classList.remove('hidden');
     });
@@ -570,8 +555,6 @@ const getTechIcon = (tech: { name: string; icon?: string }) => techIconMap[tech.
     floatingThemeLight.addEventListener('click', () => {
       document.body.classList.remove('light-mode');
       localStorage.setItem('theme', 'dark');
-      themeToggleLight.classList.add('hidden');
-      themeToggleDark.classList.remove('hidden');
       floatingThemeLight.classList.add('hidden');
       floatingThemeDark.classList.remove('hidden');
     });
@@ -584,9 +567,44 @@ const getTechIcon = (tech: { name: string; icon?: string }) => techIconMap[tech.
       menu.style.scale = open ? '1 0' : '1 1';
       menu.style.opacity = open ? '0' : '1';
     });
+
+    // Cerrar el menú al hacer clic en cualquier enlace
+    const menuLinks = menu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.dataset.open = 'false';
+        menu.style.scale = '1 0';
+        menu.style.opacity = '0';
+      });
+    });
   }
 
-  // Header siempre visible - scroll behavior deshabilitado
+  // Animación del header: se oculta al bajar y aparece al subir
+  if (header && toolbar) {
+    loadGsap().then(([gsapModule, scrollTriggerModule]) => {
+      const gsap = gsapModule.gsap || gsapModule.default || gsapModule;
+      const ScrollTrigger = scrollTriggerModule.ScrollTrigger || scrollTriggerModule.default;
+      gsap.registerPlugin(ScrollTrigger);
+
+      const showAnim = gsap.from(toolbar, {
+        yPercent: -100,
+        paused: true,
+        duration: 0.25,
+        ease: 'power2.out'
+      }).progress(1);
+
+      ScrollTrigger.create({
+        start: 'top top',
+        end: 'max',
+        onUpdate: (self) => {
+          header.classList.toggle('header-compact', self.progress > 0.05);
+          self.direction === -1 ? showAnim.play() : showAnim.reverse();
+        }
+      });
+    }).catch((err) => {
+      console.error('No se pudo cargar GSAP/ScrollTrigger', err);
+    });
+  }
 
   if (backToTop && floatingThemeDark && floatingThemeLight && floatingAgenda) {
     window.addEventListener('scroll', () => {

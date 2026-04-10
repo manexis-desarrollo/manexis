@@ -4,9 +4,15 @@ import "../styles/global.css";
 const {
   title = "MANEXIS | Consultora de software",
   description = "Construimos plataformas y productos digitales a la velocidad que tu negocio necesita.",
-  ogImage = "/favicon.svg",
-  canonical = "https://manexis.com/"
+  ogImage = "/images/og-image.svg",
+  canonical
 } = Astro.props;
+
+const site = Astro.site;
+const canonicalUrl = canonical
+  ? (site ? new URL(canonical, site).toString() : canonical)
+  : (site ? new URL(Astro.url.pathname, site).toString() : Astro.url.toString());
+const ogImageUrl = site ? new URL(ogImage, site).toString() : ogImage;
 ---
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
@@ -16,19 +22,19 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index,follow" />
-    <link rel="canonical" href={canonical} />
+    <link rel="canonical" href={canonicalUrl} />
     <meta name="theme-color" content="#0d1117" />
     <link rel="icon" type="image/svg+xml" href="/images/manexis_h_b_p.png" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
-    <script type="application/ld+json">
+    <meta name="twitter:image" content={ogImageUrl} />
+    <script type="application/ld+json" is:inline>
   {
     "@context": "https://schema.org",
     "@type": "Organization",

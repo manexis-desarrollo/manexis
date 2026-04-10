@@ -1,11 +1,14 @@
 export const prerender = true;
 
-const baseUrl = "https://manexis.com"; // Actualiza al dominio final
-
-export function GET() {
-  const pages = ["/", "/#servicios", "/#precios", "/#proyectos", "/#contacto", "/#faq"];
+export function GET({ site, request }) {
+  const baseUrl = site ?? new URL(request.url).origin;
+  const origin = baseUrl instanceof URL ? baseUrl.origin : baseUrl;
+  const pages = ["/"];
   const urls = pages
-    .map((path) => `<url><loc>${baseUrl}${path}</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>`)
+    .map((path) => {
+      const loc = new URL(path, origin).toString();
+      return `<url><loc>${loc}</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>`;
+    })
     .join("");
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

@@ -1,10 +1,16 @@
 # build output
 dist/
+# test coverage
+coverage/
+
+# netlify local state
+.netlify/
 # generated types
 .astro/
 
 # dependencies
 node_modules/
+.pnpm-store/
 
 # logs
 npm-debug.log*
@@ -13,9 +19,15 @@ yarn-error.log*
 pnpm-debug.log*
 
 
+# lockfiles no usados (este repo usa pnpm)
+package-lock.json
+yarn.lock
+
+
 # environment variables
 .env
-.env.production
+.env.*
+!.env.example
 
 # macOS-specific files
 .DS_Store

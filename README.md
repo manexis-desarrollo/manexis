@@ -165,7 +165,7 @@ Archivo:
 
 Configurado con:
 
-- `site: https://manexis.com`
+- `site: https://manexis.site`
 - `trailingSlash: always`
 
 ### 8.2 Open Graph
@@ -301,7 +301,3 @@ pnpm approve-builds
 ## 17. Licencia
 
 Uso interno de MANEXIS salvo que se indique otra licencia de forma explicita.
-
----
-
-Si quieres, en el siguiente paso tambien puedo dejarte una plantilla de CONTRIBUTING.md y un PR template para estandarizar colaboraciones. 🚀

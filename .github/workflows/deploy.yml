@@ -5,14 +5,39 @@ on:
     branches:
       - main
 
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
 jobs:
-  deploy:
+  build-check:
+    name: Build Check
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install deps
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build
+
+  deploy:
+    name: Deploy VPS
+    needs: build-check
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
@@ -24,18 +49,39 @@ jobs:
         run: |
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
 
+          set -e
+
           cd ~/apps/frontend/manexis
 
+          echo "📌 Save current commit"
+          PREVIOUS_COMMIT=$(git rev-parse HEAD)
+
           echo "🚀 Updating code..."
-          git fetch origin
+          git fetch origin main
           git reset --hard origin/main
 
           echo "🐳 Rebuilding..."
-          docker compose up -d --build --remove-orphans
+          docker compose down
+          docker compose up -d --build
 
-          echo "🧹 Cleaning..."
-          docker image prune -f
+          echo "⏳ Waiting for app..."
+          sleep 5
 
-          echo "✅ Deploy done"
+          echo "🔍 Health check..."
+          for i in $(seq 1 10); do
+            if curl -f http://localhost >/dev/null 2>&1; then
+              echo "✅ App is up"
+              exit 0
+            fi
+            echo "Retry $i..."
+            sleep 3
+          done
+
+          echo "❌ Failed, rollback..."
+          git reset --hard "$PREVIOUS_COMMIT"
+          docker compose down
+          docker compose up -d --build
+
+          exit 1
 
           EOF
